@@ -3,7 +3,7 @@ FROM alpine:edge
 ARG UNISON_VERSION=2.51.2
 RUN apk add --no-cache build-base curl bash supervisor inotify-tools rsync ruby\
     && apk add --update-cache --repository http://dl-4.alpinelinux.org/alpine/edge/testing/ ocaml \
-    && curl -L https://github.com/bcpierce00/unison/archive/$UNISON_VERSION.tar.gz | tar zxv -C /tmp \
+    && curl -L https://github.com/bcpierce00/unison/archive/v$UNISON_VERSION.tar.gz | tar zxv -C /tmp \
     && cd /tmp/unison-${UNISON_VERSION} \
     && sed -i -e 's/GLIBC_SUPPORT_INOTIFY 0/GLIBC_SUPPORT_INOTIFY 1/' src/fsmonitor/linux/inotify_stubs.c \
     && make UISTYLE=text NATIVE=true STATIC=true \
